@@ -1,6 +1,6 @@
 # AnnouncementService
 Development Time: 20 hours
-Technology Stack: ASP.NET Core, Entity Framework Core, MS SQL, MediatR, FluentValidation, JWT Bearer, Identity, React.
+Technology Stack: ASP.NET Core, Entity Framework Core, MS SQL, MediatR, FluentValidation, JWT Bearer, Identity, XUnit, Moq, React.
 
 The back-end is designed following the CQRS pattern and adheres to the principles of multi-layered (Onion) architecture, including the following layers:
 
