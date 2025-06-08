@@ -25,4 +25,10 @@
     <ProjectReference Include="..\AnnouncementService.BLL\AnnouncementService.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Client\src\pages\about\" />
+    <Folder Include="Client\src\pages\announcement-details\" />
+    <Folder Include="Client\src\styles\" />
+  </ItemGroup>
+
 </Project>

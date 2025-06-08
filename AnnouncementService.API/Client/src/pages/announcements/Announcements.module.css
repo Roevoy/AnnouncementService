@@ -1,0 +1,42 @@
+/* Announcements.module.css */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #222;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+p {
+  margin-bottom: 0;
+  color: #555;
+}
