@@ -8,7 +8,7 @@ Core – domain entities
 
 BLL – business logic, commands, handlers, validators
 
-DLL – repositories for database operations, DbContext
+DAL – repositories for database operations, DbContext
 
 API – controllers, configuration
 
