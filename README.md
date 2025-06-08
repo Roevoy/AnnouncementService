@@ -10,7 +10,7 @@ BLL – business logic, commands, handlers, validators
 
 DAL – repositories for database operations, DbContext
 
-API – controllers, configuration
+API – controllers, configuration, middlewares
 
 Shared – DTO objects
 
