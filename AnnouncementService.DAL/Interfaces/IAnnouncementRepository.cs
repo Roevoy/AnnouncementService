@@ -10,7 +10,7 @@ namespace AnnouncementService.DAL.Interfaces
         public Task<IEnumerable<Announcement>> GetAnnouncementsByCreatorIdAsync(string creatorId);
         public Task<IEnumerable<Announcement>> GetAnnouncementsByTitleAsync(string title);
         public Task<IEnumerable<Announcement>> GetAnnouncementsAsync();
-        public Task<IEnumerable<AnnouncementPreviewDto>> GetAnnouncementsPreviewAsync();
+        public Task<IEnumerable<AnnouncementLiteDto>> GetLiteAnnouncementsAsync();
         //commands
         public Task CreateAnnouncementAsync(Announcement announcement); 
         public Task UpdateAnnouncementAsync(Announcement announcement); 

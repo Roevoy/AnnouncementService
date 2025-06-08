@@ -43,9 +43,8 @@ namespace AnnouncementService.API.Middleware
 
             var result = JsonSerializer.Serialize(new
             {
-                error = exception.Message
+                errors = new[] { exception.Message }
             });
-
             await context.Response.WriteAsync(result);
         }
     }

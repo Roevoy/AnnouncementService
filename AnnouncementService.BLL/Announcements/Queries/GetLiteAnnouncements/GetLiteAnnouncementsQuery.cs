@@ -3,5 +3,5 @@ using MediatR;
 
 namespace AnnouncementService.BLL.Queries
 {
-    public class GetAnnouncementsPreviewQuery : IRequest<IEnumerable<AnnouncementPreviewDto>> { }
+    public class GetLiteAnnouncementsQuery : IRequest<IEnumerable<AnnouncementLiteDto>> { }
 }

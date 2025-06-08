@@ -12,6 +12,9 @@ namespace AnnouncementService.API.Controllers
         private readonly IMediator _mediator;
         public AuthController(IMediator mediator)
         {
+#if DEBUG
+            Task.Delay(2000).Wait();
+#endif
             _mediator = mediator;
         }
 

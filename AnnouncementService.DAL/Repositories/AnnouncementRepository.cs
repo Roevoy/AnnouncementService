@@ -20,13 +20,13 @@ namespace AnnouncementService.DAL.Repositories
 
         public async Task DeleteAnnouncementAsync(Guid id)
         {
-           _dbContext.Announcements.Remove(await GetAnnouncementByIdAsync(id));
+            _dbContext.Announcements.Remove(await GetAnnouncementByIdAsync(id));
             await _dbContext.SaveChangesAsync();
         }
 
         public async Task<Announcement> GetAnnouncementByIdAsync(Guid id)
         {
-            return await _dbContext.Announcements.FindAsync(id) ?? 
+            return await _dbContext.Announcements.FindAsync(id) ??
                 throw new KeyNotFoundException($"Announcement with ID {id} is not found.");
         }
 
@@ -48,10 +48,10 @@ namespace AnnouncementService.DAL.Repositories
                 .Where(a => a.Title == title)
                 .ToListAsync();
         }
-        public async Task<IEnumerable<AnnouncementPreviewDto>> GetAnnouncementsPreviewAsync()
+        public async Task<IEnumerable<AnnouncementLiteDto>> GetLiteAnnouncementsAsync()
         {
-            IQueryable<AnnouncementPreviewDto> query = _dbContext.Announcements
-                .Select(a => new AnnouncementPreviewDto
+            IQueryable<AnnouncementLiteDto> query = _dbContext.Announcements
+                .Select(a => new AnnouncementLiteDto
                 {
                     Id = a.Id,
                     Title = a.Title,

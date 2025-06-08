@@ -1,4 +1,5 @@
-﻿using AnnouncementService.BLL.Queries;
+﻿using AnnouncementService.BLL.Announcements.Queries;
+using AnnouncementService.BLL.Queries;
 using AnnouncementService.BLL.Сommands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -15,6 +16,9 @@ namespace AnnouncementService.API.Controllers
         private readonly IMediator _mediator;
         public AnnouncementsController(IMediator mediator)
         {
+#if DEBUG
+            Task.Delay(2000).Wait(); 
+#endif
             _mediator = mediator;
         }
 
@@ -25,10 +29,10 @@ namespace AnnouncementService.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("Preview")]
-        public async Task<IActionResult> GetAnnouncementsPreview()
+        [HttpGet("Lite")]
+        public async Task<IActionResult> GetLiteAnnouncements()
         {
-            return Ok(await _mediator.Send(new GetAnnouncementsPreviewQuery()));
+            return Ok(await _mediator.Send(new GetLiteAnnouncementsQuery()));
         }
 
         [HttpGet("ByTitle")]
@@ -45,6 +49,11 @@ namespace AnnouncementService.API.Controllers
 
         [HttpGet("ById")]
         public async Task<IActionResult> GetAnnouncementById([FromQuery] GetAnnouncementByIdQuery query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
+        [HttpGet("Similar")]
+        public async Task<IActionResult> GetSimilarAnnouncements([FromQuery] GetSimilarAnnouncementsQuery query)
         {
             return Ok(await _mediator.Send(query));
         }

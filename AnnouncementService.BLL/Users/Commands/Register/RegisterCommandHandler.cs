@@ -15,8 +15,9 @@ namespace AnnouncementService.BLL.Users.Commands
             var user = new IdentityUser
             {
                 UserName = request.UserName,
-                Email = request.Email
+                Email = request.Email,
             };
+            await _userManager.AddToRoleAsync(user, "User");
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {

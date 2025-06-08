@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json;
 
 namespace AnnouncementService.API
 {
@@ -33,15 +34,15 @@ namespace AnnouncementService.API
            .AddEntityFrameworkStores<AppDbContext>()
            .AddDefaultTokenProviders();
 
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddDefaultPolicy(policy =>
-            //    {
-            //        policy.WithOrigins("http://localhost:4200") //angular
-            //              .AllowAnyHeader()
-            //              .AllowAnyMethod();
-            //    });
-            //});
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000") //react
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
 
             builder.Services.AddAuthentication(options =>
             {
@@ -66,7 +67,11 @@ namespace AnnouncementService.API
                     {
                         context.HandleResponse();
                         context.Response.StatusCode = 401;
-                        context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Unauthorized access. Please provide a valid token."));
+                        context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(
+                            new
+                            {
+                                errors = new[] { "Unauthorized access. Please provide a valid token." }
+                            })));
                         return Task.CompletedTask;
                     }
                 };
@@ -95,6 +100,12 @@ namespace AnnouncementService.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.MapControllers();
+            app.MapFallbackToFile("index.html");
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
             //app.UseRouting();

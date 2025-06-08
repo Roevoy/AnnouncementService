@@ -1,6 +1,6 @@
 ﻿namespace AnnouncementService.Shared.DTOs
 {
-    public class AnnouncementPreviewDto
+    public class AnnouncementLiteDto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
